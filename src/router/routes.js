@@ -1,11 +1,6 @@
 const routes = [
   {
     path: '/',
-    redirect: '/Furor',
-  },
-
-  {
-    path: '/Furor',
     component: () => import('pages/LandingPage.vue'),
   },
 
