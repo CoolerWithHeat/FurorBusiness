@@ -1,16 +1,21 @@
 const routes = [
   {
-    path: '/admin',
-    component: () => import('layouts/MainLayout.vue'),
-    children: [
-      { path: '/demo', component: () => import('pages/IndexPage.vue') },
-      { path: '/crud', component: () => import('pages/ItemsPage.vue') },
-    ],
+    path: '/',
+    redirect: '/Furor',
   },
-  { path: '', redirect: '/Furor' },
+
   {
     path: '/Furor',
     component: () => import('pages/LandingPage.vue'),
+  },
+
+  {
+    path: '/',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: 'demo', component: () => import('pages/IndexPage.vue') },
+      { path: 'crud', component: () => import('pages/ItemsPage.vue') },
+    ],
   },
 
   {

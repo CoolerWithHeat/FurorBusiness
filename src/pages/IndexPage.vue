@@ -14,7 +14,7 @@
         <q-item><q-item-section>✅ LocalStorage persistence</q-item-section></q-item>
       </q-list>
 
-      <q-btn class="q-mt-lg" color="primary" label="Open CRUD" to="/CRUD" />
+      <q-btn class="q-mt-lg" color="primary" label="Open CRUD" to="../crud" />
     </q-card>
   </q-page>
 </template>

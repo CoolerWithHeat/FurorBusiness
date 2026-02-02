@@ -1,17 +1,29 @@
 <script>
+import bootstrapCss from '../css/custom-bootstrap.css?inline'
+import themifyCss from '../css/themify-icons.css?inline'
+import owlCss from '../css/owl.carousel.min.css?inline'
+import mainCss from '../css/main.css?inline'
+
 export default {
   data() {
-    return { stylesReady: false }
+    return { 
+      stylesReady: false,
+      styleElement: null
+    }
   },
-  async beforeMount() {
-    await Promise.all([
-      import('../css/custom-bootstrap.css'),
-      import('../css/themify-icons.css'),
-      import('../css/owl.carousel.min.css'),
-      import('../css/main.css'),
-    ])
+  beforeMount() {
+    this.styleElement = document.createElement('style')
+    this.styleElement.id = 'landing-page-styles'
+    this.styleElement.textContent = [bootstrapCss, themifyCss, owlCss, mainCss].join('\n')
+    document.head.appendChild(this.styleElement)
     this.stylesReady = true
   },
+  beforeUnmount() {
+    if (this.styleElement) {
+      this.styleElement.remove()
+      this.styleElement = null
+    }
+  }
 }
 </script>
 
@@ -22,22 +34,22 @@ export default {
         <div class="row">
           <div class="col-md-12">
             <nav class="navbar navbar-dark navbar-expand-lg">
-              <a class="navbar-brand" href="../demo">
+              <a class="navbar-brand" href="../#/demo">
                 <span>Furor</span>
               </a>
               <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ml-auto">
                   <li class="nav-item">
-                    <a class="nav-link active" href="../demo"
+                    <a class="nav-link active" href="../#/demo"
                       >HOME <span class="sr-only">(current)</span></a
                     >
                   </li>
-                  <li class="nav-item"><a class="nav-link" href="../demo">FEATURES</a></li>
-                  <li class="nav-item"><a class="nav-link" href="../demo">GALLERY</a></li>
-                  <li class="nav-item"><a class="nav-link" href="../demo">PRICING</a></li>
-                  <li class="nav-item"><a class="nav-link" href="../demo">CONTACT</a></li>
+                  <li class="nav-item"><a class="nav-link" href="../#/demo">FEATURES</a></li>
+                  <li class="nav-item"><a class="nav-link" href="../#/demo">GALLERY</a></li>
+                  <li class="nav-item"><a class="nav-link" href="../#/demo">PRICING</a></li>
+                  <li class="nav-item"><a class="nav-link" href="../#/demo">CONTACT</a></li>
                   <li class="nav-item">
-                    <a href="../demo" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3"
+                    <a href="../#/demo" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3"
                       >Download</a
                     >
                   </li>
@@ -128,7 +140,7 @@ export default {
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati vel
                 exercitationem eveniet vero maxime ratione
               </p>
-              <a href="../demo" class="btn btn-primary">Read more</a>
+              <a href="../#/demo" class="btn btn-primary">Read more</a>
             </div>
           </div>
         </div>
@@ -156,7 +168,7 @@ export default {
               <div class="list-group-item"><del>Reports and analytics</del></div>
             </ul>
             <div class="card-body">
-              <a href="../demo" class="btn btn-primary btn-lg btn-block">Choose this Plan</a>
+              <a href="../#/demo" class="btn btn-primary btn-lg btn-block">Choose this Plan</a>
             </div>
           </div>
           <div class="card pricing popular">
@@ -172,7 +184,7 @@ export default {
               <div class="list-group-item">Reports and analytics</div>
             </ul>
             <div class="card-body">
-              <a href="../demo" class="btn btn-primary btn-lg btn-block">Choose this Plan</a>
+              <a href="../#/demo" class="btn btn-primary btn-lg btn-block">Choose this Plan</a>
             </div>
           </div>
           <div class="card pricing">
@@ -188,7 +200,7 @@ export default {
               <div class="list-group-item">Web hooks</div>
             </ul>
             <div class="card-body">
-              <a href="../demo" class="btn btn-primary btn-lg btn-block">Choose this Plan</a>
+              <a href="../#/demo" class="btn btn-primary btn-lg btn-block">Choose this Plan</a>
             </div>
           </div>
         </div>
@@ -207,11 +219,11 @@ export default {
             rather than enterprise-wide methods of empowerment.
           </p>
           <div class="my-4">
-            <a href="../demo" class="btn btn-light"
+            <a href="../#/demo" class="btn btn-light"
               ><img src="images/appleicon.png" alt="icon" /> App Store</a
             >
-            <a href="../demo" class="btn btn-light"
-              ><img src="images/playicon.png" alt="icon" /> Google play</a
+            <a href="../#/demo" class="btn btn-light"
+                ><img src="images/playicon.png" alt="icon" /> Google play</a
             >
           </div>
         </div>
